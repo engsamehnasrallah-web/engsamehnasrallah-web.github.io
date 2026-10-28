@@ -1,7 +1,5 @@
 # Sameh Nasrallah | Portfolio
 
-![Portfolio preview](assets/preview.png)
-
 Personal portfolio of **Sameh Nasrallah**, a Computer Science & AI student focused on **DevOps and infrastructure**. It presents documented projects in Active Directory, Cisco networking and Linux automation, plus an Arabic YouTube channel teaching CS from the beginning.
 
 **Live site:** https://engsamehnasrallah-web.github.io
@@ -9,7 +7,7 @@ Personal portfolio of **Sameh Nasrallah**, a Computer Science & AI student focus
 ## Highlights
 
 - **Featured projects** with honest status labels (completed, in progress, stable release), followed by smaller tools and general programming work.
-- **Scroll-driven story**: a timeline that fills as you scroll, from the first day at university to the current goal.
+- **Scroll-driven story**: a timeline that fills as you scroll, from childhood in 2006 to the current goal.
 - **YouTube section** with thumbnail cards for every video and Short, grouped into a learning path instead of a flat list.
 - **Live YouTube badge** in the header showing views, subscribers and likes through the YouTube Data API v3.
 - **Dark and light themes**, remembered between visits and following the system preference on first load.
