@@ -1,5 +1,7 @@
 # Sameh Nasrallah | Portfolio
 
+![Portfolio preview](assets/preview.png)
+
 Personal portfolio of **Sameh Nasrallah**, a Computer Science & AI student focused on **DevOps and infrastructure**. It presents documented projects in Active Directory, Cisco networking and Linux automation, plus an Arabic YouTube channel teaching CS from the beginning.
 
 **Live site:** https://engsamehnasrallah-web.github.io
