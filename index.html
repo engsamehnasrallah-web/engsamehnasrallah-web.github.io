@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sameh Nasrallah | DevOps &amp; Infrastructure</title>
+<meta name="description" content="Sameh Nasrallah, Computer Science &amp; AI student building hands-on DevOps and infrastructure projects: Active Directory, Cisco networking, Linux automation and CI.">
+<meta property="og:title" content="Sameh Nasrallah | DevOps &amp; Infrastructure">
+<meta property="og:description" content="Documented, reproducible infrastructure and automation projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<script>
+try{var t=localStorage.getItem("theme");if(!t){t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t}catch(e){}
+</script>
+<style>
+:root{--bg:#0c1522;--surface:#13202f;--line:#25374b;--ink:#e8eef5;--mute:#9db0c4;--accent:#4cc3d9;--accent-ink:#06222a;--ok:#5ad19a;--wip:#f2b84b}
+:root[data-theme="light"]{--bg:#f4f7fa;--surface:#ffffff;--line:#d5dee8;--ink:#12202e;--mute:#4f6275;--accent:#0b6b86;--accent-ink:#ffffff;--ok:#12794f;--wip:#8a5a00}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Source Sans 3",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque","Source Sans 3",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font:700 1.05rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+nav{display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;color:var(--mute);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:600 .85rem "Source Sans 3",sans-serif;cursor:pointer}
+#theme:hover{border-color:var(--accent)}
+section{padding:72px 0}
+h2{font-size:clamp(1.7rem,3.5vw,2.2rem);margin-bottom:28px}
+.hero{padding:64px 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:4px 14px;margin-bottom:22px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+.role{font:500 clamp(1.15rem,2.4vw,1.5rem) "Bricolage Grotesque",sans-serif;color:var(--accent);margin:14px 0 18px}
+.lead{max-width:56ch;color:var(--mute);margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;border-radius:8px;padding:11px 20px;border:1px solid var(--line)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{border-color:var(--accent)}
+.photo{position:relative;justify-self:end;width:100%;max-width:300px}
+.photo::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid var(--accent);border-radius:14px}
+.photo img{position:relative;display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:14px}
+.about{max-width:68ch}
+.about p{margin:0 0 16px;color:var(--mute)}
+.edu{margin-top:8px;color:var(--ink)}
+.proj{border-top:1px solid var(--line);padding:26px 0;display:grid;grid-template-columns:1fr auto;gap:8px 32px}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{font-size:1.4rem}
+.proj h3 a{text-decoration:none}
+.proj h3 a:hover{color:var(--accent)}
+.proj p{grid-column:1;margin:4px 0 0;color:var(--mute);max-width:64ch}
+.tags{grid-column:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tags span{font-size:.85rem;color:var(--mute);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:2px 10px}
+.pill{grid-row:1;grid-column:2;align-self:start;font-size:.85rem;font-weight:600;border-radius:999px;padding:3px 12px;border:1px solid currentColor;white-space:nowrap}
+.pill.ok{color:var(--ok)}.pill.wip{color:var(--wip)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card:hover{border-color:var(--accent)}
+.card h3{font-size:1.1rem;margin-bottom:6px}
+.card p{margin:0 0 10px;color:var(--mute);font-size:.97rem;line-height:1.5}
+.card .pill{font-size:.78rem;padding:1px 9px}
+.sub{color:var(--mute);margin:-12px 0 24px}
+.skills{display:grid;grid-template-columns:150px 1fr;gap:14px 24px;margin:0}
+.skills dt{font-weight:600}
+.skills dd{margin:0;color:var(--mute)}
+.learn{margin-top:32px;color:var(--mute)}
+.learn strong{color:var(--ink)}
+.contact p{max-width:52ch;color:var(--mute);margin:0 0 24px}
+.tl{list-style:none;margin:0;padding:0 0 0 28px;border-left:2px solid var(--line)}
+.tl>li{position:relative;padding-bottom:40px}
+.tl>li:last-child{padding-bottom:0}
+.tl>li::before{content:"";position:absolute;left:-37px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.tl h3{font-size:1.3rem}
+.tl .when{margin:4px 0 12px;color:var(--mute);max-width:62ch}
+.vids{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.vids a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.vids a:hover{border-color:var(--accent)}
+.vids small{color:var(--mute);white-space:nowrap}
+.vids .main{border-color:var(--accent)}
+.mw{font-size:1.05rem;margin:0 0 12px;color:var(--mute)}
+.top{margin-bottom:48px}
+.vids a:hover span{color:var(--accent)}
+.tl details{margin-top:10px}
+.tl summary{cursor:pointer;color:var(--accent);font-weight:600;padding:6px 0}
+.tl details .vids{margin-top:8px}
+.icons{display:flex;flex-wrap:wrap;gap:14px}
+.ic{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:border-color .15s,color .15s}
+.ic:hover{border-color:var(--accent);color:var(--accent)}
+.ic svg{width:24px;height:24px;fill:currentColor}
+.ic svg.line{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:.9rem}
+@media (max-width:760px){
+ .hero .wrap{grid-template-columns:1fr}
+ .photo{order:-1;justify-self:start;max-width:200px}
+ nav a{display:none}
+ .proj{grid-template-columns:1fr}
+ .pill{grid-row:auto;grid-column:1;justify-self:start}
+ .skills{grid-template-columns:1fr;gap:2px}.skills dd{margin-bottom:14px}
+ section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.vids{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.vids li.v{grid-column:span 2}
+.vids a.vc{display:block;padding:0;overflow:hidden}
+.vc .th{display:block;position:relative;background:#000;overflow:hidden}
+.vc.v .th{aspect-ratio:16/9}.vc.s .th{aspect-ratio:9/16}
+.vc img{display:block;width:100%;height:100%;object-fit:cover}
+.vc .th::before{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:rgba(0,0,0,.6)}
+.vc .th::after{content:"";position:absolute;left:50%;top:50%;margin:-9px 0 0 -5px;border-left:15px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.vc .vt{display:block;padding:10px 12px 2px;font-weight:600;font-size:.95rem;line-height:1.35}
+.vc small{display:block;padding:0 12px 12px;white-space:normal}
+.vc:hover img{filter:brightness(1.1)}
+.yt{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 8px;white-space:nowrap}
+.yt:hover{border-color:var(--accent)}
+.yt svg{width:22px;height:22px;fill:#f00;flex:none}
+.yt b{font-weight:600}.yt span{color:var(--mute)}
+header .wrap{gap:12px}
+.story{position:relative;margin-top:36px;padding-left:40px;--p:0}
+.story::before,.story::after{content:"";position:absolute;left:11px;top:0;width:2px}
+.story::before{bottom:0;background:var(--line)}
+.story::after{height:calc(var(--p)*100%);background:var(--accent)}
+.story .tr{position:absolute;left:5px;top:calc(var(--p)*100%);width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 25%,transparent);z-index:1}
+.st{padding-bottom:64px;opacity:.3;transition:opacity .45s}
+.st:last-of-type{padding-bottom:0}
+.st.on{opacity:1}
+.st .yr{font:800 clamp(1.7rem,4.5vw,2.6rem)/1.1 "Bricolage Grotesque",sans-serif;color:var(--accent)}
+.st h3{font-size:1.25rem;margin:6px 0}
+.st p{margin:0;max-width:56ch;color:var(--mute)}
+@media (max-width:760px){.vids{grid-template-columns:repeat(2,1fr)}.yt .x,.yt .nm{display:none}}
+@media (prefers-reduced-motion:reduce){.st{opacity:1;transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="brand" href="#top">Sameh Nasrallah</a>
+ <a class="yt" id="yt" href="https://youtube.com/@samehnasralla0" rel="noopener" aria-label="Tech House – CS on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><b class="nm">Tech House – CS</b><span class="x" id="ytv"></span><span id="yts"></span><span class="x" id="ytl"></span></a>
+ <nav aria-label="Main">
+  <a href="#story">Story</a><a href="#projects">Projects</a><a href="#videos">Videos</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+  <button id="theme" type="button" aria-label="Switch between dark and light mode">Light</button>
+ </nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+ <div>
+  <p class="status"><i></i>Open to internships &amp; junior DevOps roles</p>
+  <h1>Sameh Nasrallah</h1>
+  <p class="role">DevOps &amp; Infrastructure</p>
+  <p class="lead">I build and document real infrastructure: Active Directory environments, routed networks, Linux automation and CI pipelines. Every project ships with its diagrams, configs and troubleshooting notes.</p>
+  <div class="btns">
+   <a class="btn primary" href="#projects">View projects</a>
+   <a class="btn" href="assets/Sameh_Nasrallah_CV.pdf" download>Download CV</a>
+   <a class="btn" href="#contact">Get in touch</a>
+  </div>
+ </div>
+ <div class="photo"><img src="assets/profile.jpg" alt="Portrait of Sameh Nasrallah" width="584" height="800"></div>
+</div></section>
+
+<section id="about"><div class="wrap">
+ <h2>About</h2>
+ <div class="about">
+  <p>I’m a Computer Science &amp; AI student building hands-on experience in DevOps and infrastructure. I design and document real projects: Active Directory labs, routed networks, CI pipelines and automation tools.</p>
+  <p>I work across Linux and Windows environments, and I focus on shipping things that are tested, documented and reproducible.</p>
+  <p class="edu">B.Sc. Computer Science &amp; Artificial Intelligence, Minia National University (2024 – 2028)</p>
+ </div>
+</div></section>
+
+<section id="story"><div class="wrap">
+ <h2>My story</h2>
+ <p class="sub">Scroll to follow the path from the first day at university to today.</p>
+ <div class="story" id="storyline"><span class="tr"></span>
+  <div class="st"><div class="yr">2024</div><h3>Day one at university</h3><p>I started my B.Sc. in Computer Science &amp; Artificial Intelligence at Minia National University.</p></div>
+  <div class="st"><div class="yr">Foundations</div><h3>Learning the basics on my own</h3><p>CCNA, CEH, Linux (Kali, Parrot, Ubuntu), the command line, hardware, operating systems and Arduino. I learn by building, not by collecting certificates.</p></div>
+  <div class="st"><div class="yr">Teaching</div><h3>Tech House – CS</h3><p>I started a channel to teach computer science from the beginning, in Arabic: NAND gates, operating systems, networking and security, in videos and Shorts.</p></div>
+  <div class="st"><div class="yr">Building</div><h3>Small tools first</h3><p>A network scanner, a log analyzer, backup automation and a Linux monitoring tool. Each one taught me something I reused in the next.</p></div>
+  <div class="st"><div class="yr">Shipping</div><h3>Bigger, documented projects</h3><p>A routed Cisco network, a multi-router WAN, an Active Directory lab, and the first stable release of the Infrastructure Health Checker (v1.0.0).</p></div>
+  <div class="st"><div class="yr">Now</div><h3>Linux automation and DevOps</h3><p>I’m building a Bash toolkit for Linux server operations and documenting everything on GitHub.</p></div>
+  <div class="st"><div class="yr">2028</div><h3>The goal</h3><p>Graduate and work as a DevOps / infrastructure engineer who ships real, documented systems.</p></div>
+ </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+ <h2>Featured projects</h2>
+ <article class="proj">
+  <h3><a href="https://github.com/engsamehnasrallah-web/Infrastructure_Health_Checker">Infrastructure Health Checker</a></h3>
+  <span class="pill ok">v1.0.0 stable</span>
+  <p>A system and infrastructure health-checking tool. My first stable, versioned release.</p>
+  <div class="tags"><span>Automation</span><span>Monitoring</span><span>Releases</span></div>
+ </article>
+ <article class="proj">
+  <h3><a href="https://github.com/engsamehnasrallah-web/Active-Directory-Infrastructure-Lab">Active Directory &amp; Windows Server Lab</a></h3>
+  <span class="pill ok">Completed</span>
+  <p>A small-organization environment with AD DS, DNS, DHCP, OUs, users and groups, GPO and IIS, plus domain-joined clients. Documented with architecture diagrams and a troubleshooting log.</p>
+  <div class="tags"><span>Windows Server</span><span>Active Directory</span><span>VMware</span></div>
+ </article>
+ <article class="proj">
+  <h3><a href="https://github.com/engsamehnasrallah-web/Linux_Server_Operations_Toolkit">Linux Server Operations Toolkit</a></h3>
+  <span class="pill wip">In progress</span>
+  <p>A Bash toolkit for everyday Linux server operations, built in phases from planning to review.</p>
+  <div class="tags"><span>Bash</span><span>Linux</span><span>Automation</span></div>
+ </article>
+ <article class="proj">
+  <h3><a href="https://github.com/engsamehnasrallah-web/Multi-LAN-Routed-Network">Multi-LAN Routed Network</a></h3>
+  <span class="pill ok">Completed</span>
+  <p>Two routers, two switches, two LANs and a serial WAN link, with my own IP addressing plan and static routing. Documented with configs and diagrams.</p>
+  <div class="tags"><span>Cisco IOS</span><span>Static routing</span><span>Packet Tracer</span></div>
+ </article>
+</div></section>
+
+<section id="more"><div class="wrap">
+ <h2>More projects</h2>
+ <div class="grid">
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Multi-Router-WAN"><h3>Multi-Router WAN</h3><p>A multi-router WAN built in Cisco Packet Tracer.</p><span class="pill ok">Completed</span></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Linux_Monitoring_Tool"><h3>Linux Monitoring Tool</h3><p>Monitors a Linux system from the command line.</p><span class="pill ok">Completed</span></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Log_Analyzer"><h3>Log Analyzer</h3><p>Python tool that parses Linux login logs with regex.</p><span class="pill ok">Completed</span></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Backup_Automation_Tool"><h3>Backup Automation Tool</h3><p>Automates file backups.</p><span class="pill ok">Completed</span></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Network_Scanner"><h3>Network Scanner</h3><p>Python IP validation and port scanning utility.</p><span class="pill ok">Completed</span></a>
+ </div>
+</div></section>
+
+<section id="other"><div class="wrap">
+ <h2>Other work</h2>
+ <p class="sub">General programming projects outside my main focus.</p>
+ <div class="grid">
+  <a class="card" href="https://github.com/engsamehnasrallah-web/File_Operations_Toolkit"><h3>File Operations Toolkit</h3><p>File handling utilities.</p></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Product_Management_System"><h3>Product Management System</h3><p>Web-based product and inventory tracking in HTML, CSS and JavaScript.</p></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/S-S_Restaurant"><h3>S&amp;S Restaurant</h3><p>A restaurant project.</p></a>
+ </div>
+</div></section>
+
+<section id="videos"><div class="wrap">
+ <h2>Teaching on YouTube</h2>
+ <p class="sub">Tech House – CS is my Arabic channel where I teach computer science from the very beginning: 8 videos and 25 Shorts so far. This is the path, in the order I’d watch it.</p>
+ <h3 class="mw">Most watched</h3>
+ <ul class="vids top"><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/SGEp2EhucNA" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/SGEp2EhucNA/hqdefault.jpg"></span><span class="vt">VPN: the restaurant-number story</span><small>2.8K views</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/y6fNftH52kU" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/y6fNftH52kU/hqdefault.jpg"></span><span class="vt">I finally threw myself in</span><small>1.9K views</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/x5Hiue1RBiw" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/x5Hiue1RBiw/hqdefault.jpg"></span><span class="vt">File Extensions, part 2</span><small>1.8K views</small></a></li></ul>
+ <ol class="tl"><li><h3>Where it started</h3><p class="when">The first video: the plan to learn and teach CS step by step.</p><ul class="vids"><li class="v"><a class="vc v main" href="https://www.youtube.com/watch?v=YI_LLDB-jLg" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/YI_LLDB-jLg/hqdefault.jpg"></span><span class="vt">The beginning will be from the beginning</span><small>Video</small></a></li></ul></li><li><h3>Files and operating systems</h3><p class="when">How an operating system handles files, and what a file extension really tells you.</p><ul class="vids"><li class="v"><a class="vc v main" href="https://www.youtube.com/watch?v=AVA8IWEd4OM" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/AVA8IWEd4OM/hqdefault.jpg"></span><span class="vt">Dealing with files | Operating Systems</span><small>Video</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/LgIwUazmBy0" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/LgIwUazmBy0/hqdefault.jpg"></span><span class="vt">File Extensions, part 1</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/x5Hiue1RBiw" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/x5Hiue1RBiw/hqdefault.jpg"></span><span class="vt">File Extensions, part 2</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/mWWoUlh1rCw" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/mWWoUlh1rCw/hqdefault.jpg"></span><span class="vt">File Extensions, part 3</span><small>Short</small></a></li></ul></li><li><h3>Network fundamentals</h3><p class="when">A short-form series on how the network actually works: addressing, protocols, privacy.</p><ul class="vids"><li class="s"><a class="vc s main" href="https://www.youtube.com/shorts/SGEp2EhucNA" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/SGEp2EhucNA/hqdefault.jpg"></span><span class="vt">VPN: the restaurant-number story</span><small>Short</small></a></li></ul><details><summary>All 13 videos in this chapter</summary><ul class="vids"><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/FvuY-g5J1l4" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/FvuY-g5J1l4/hqdefault.jpg"></span><span class="vt">IP Address, part 1</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/9PEy4c0Ln5g" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/9PEy4c0Ln5g/hqdefault.jpg"></span><span class="vt">IP Address, part 2</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/A_4AWJwQRQo" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/A_4AWJwQRQo/hqdefault.jpg"></span><span class="vt">IP Address, part 3</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/73W_gO9sK40" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/73W_gO9sK40/hqdefault.jpg"></span><span class="vt">IP Address, part 4</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/b0wuRZ1hyN0" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/b0wuRZ1hyN0/hqdefault.jpg"></span><span class="vt">IP Address: a good question</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/pEiwEILbMyA" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/pEiwEILbMyA/hqdefault.jpg"></span><span class="vt">IP Address: the summary</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/DfhW0peEels" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/DfhW0peEels/hqdefault.jpg"></span><span class="vt">How MAC addresses can be used against you</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/uO7ozJv1qfk" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/uO7ozJv1qfk/hqdefault.jpg"></span><span class="vt">HTTP vs HTTPS</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/qRJTqZ5iypU" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/qRJTqZ5iypU/hqdefault.jpg"></span><span class="vt">VPN: how do I run one?</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/F99zG4f085s" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/F99zG4f085s/hqdefault.jpg"></span><span class="vt">Cookies, part 1</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/MzaGEvCi4LA" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/MzaGEvCi4LA/hqdefault.jpg"></span><span class="vt">Protect yourself, part 1</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/7pjRgJrP2cw" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/7pjRgJrP2cw/hqdefault.jpg"></span><span class="vt">Protect yourself, part 2</span><small>Short</small></a></li></ul></details></li><li><h3>Security in practice</h3><p class="when">Everyday checks and the habits that keep you from getting hacked.</p><ul class="vids"><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/8_UtEVVef_g" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/8_UtEVVef_g/hqdefault.jpg"></span><span class="vt">Check file sectors | Security, part 1</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/8FhQ1QrcQd4" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/8FhQ1QrcQd4/hqdefault.jpg"></span><span class="vt">Check a URL | Security, part 2</span><small>Short</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/dnB0GTdaqRg" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/dnB0GTdaqRg/hqdefault.jpg"></span><span class="vt">You got robbed and didn’t know</span><small>Short</small></a></li><li class="v"><a class="vc v" href="https://www.youtube.com/watch?v=CPfYzZKroCg" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/CPfYzZKroCg/hqdefault.jpg"></span><span class="vt">The art of hacking minds</span><small>Video</small></a></li></ul></li><li><h3>Building a computer from NAND gates</h3><p class="when">A four-part walkthrough of the Nand2Tetris course, from logic gates up.</p><ul class="vids"><li class="v"><a class="vc v main" href="https://www.youtube.com/watch?v=ChbvcfExuBQ" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/ChbvcfExuBQ/hqdefault.jpg"></span><span class="vt">1. Introduction</span><small>Part 1</small></a></li><li class="v"><a class="vc v" href="https://www.youtube.com/watch?v=oVUZBqoxztY" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oVUZBqoxztY/hqdefault.jpg"></span><span class="vt">2. Setup environment</span><small>Part 2</small></a></li><li class="v"><a class="vc v" href="https://www.youtube.com/watch?v=SiqQv4IQHUQ" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/SiqQv4IQHUQ/hqdefault.jpg"></span><span class="vt">3. Basic gates (Not, And)</span><small>Part 3</small></a></li><li class="v"><a class="vc v" href="https://www.youtube.com/watch?v=hbMq35snwh0" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/hbMq35snwh0/hqdefault.jpg"></span><span class="vt">4. Or &amp; universal gates (Nand)</span><small>Part 4</small></a></li></ul></li><li><h3>Mindset</h3><p class="when">Focus and self-improvement for people who learn technology.</p><ul class="vids"><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/y6fNftH52kU" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/y6fNftH52kU/hqdefault.jpg"></span><span class="vt">I finally threw myself in</span><small>Short</small></a></li><li class="v"><a class="vc v" href="https://www.youtube.com/watch?v=EstJu5gFE0k" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/EstJu5gFE0k/hqdefault.jpg"></span><span class="vt">Why you can’t focus</span><small>Video</small></a></li><li class="s"><a class="vc s" href="https://www.youtube.com/shorts/hb-k2OzVwpw" rel="noopener"><span class="th"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/hb-k2OzVwpw/hqdefault.jpg"></span><span class="vt">Can’t focus? This is why</span><small>Short</small></a></li></ul></li></ol>
+ <p class="learn"><a href="https://youtube.com/@samehnasralla0" rel="noopener">Watch the full channel on YouTube</a></p>
+</div></section>
+
+<section id="skills"><div class="wrap">
+ <h2>Skills</h2>
+ <dl class="skills">
+  <dt>Systems &amp; infra</dt><dd>Windows Server, Active Directory (DNS, DHCP, GPO, IIS), Linux (Ubuntu, Kali, Parrot), VMware Workstation</dd>
+  <dt>Networking</dt><dd>Cisco IOS, static routing, LAN/WAN design, Packet Tracer</dd>
+  <dt>Cloud &amp; DevOps</dt><dd>Docker, Git &amp; GitHub, GitHub Actions (CI), xUnit, Azure fundamentals</dd>
+  <dt>Languages</dt><dd>Bash, Python, C++, C#, JavaScript, HTML/CSS</dd>
+  <dt>Other</dt><dd>SQL Server, OOP, data structures, .NET / WinUI 3</dd>
+ </dl>
+ <p class="learn"><strong>Currently learning:</strong> Azure (AZ-900 path), CCNA fundamentals, Linux administration, CEH fundamentals.</p>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+ <h2>Contact</h2>
+ <p>Looking for an intern or junior DevOps / infrastructure engineer? I’d like to hear from you.</p>
+ <div class="icons">
+  <a class="ic" href="mailto:engsamehnasrallah@gmail.com" aria-label="Email" title="Email"><svg class="line" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
+  <a class="ic" href="https://wa.me/201557032433" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a class="ic" href="https://github.com/engsamehnasrallah-web" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+  <a class="ic" href="https://linkedin.com/in/sameh-nasrallah" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a class="ic" href="https://youtube.com/@samehnasralla0" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Sameh Nasrallah</div></footer>
+
+<script>
+(function(){
+ var r=document.documentElement,b=document.getElementById("theme");
+ function label(){b.textContent=r.dataset.theme==="dark"?"Light":"Dark"}
+ label();
+ b.addEventListener("click",function(){
+  r.dataset.theme=r.dataset.theme==="dark"?"light":"dark";label();
+  try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
+ });
+ document.getElementById("yr").textContent=new Date().getFullYear();
+})();
+
+(function(){
+ var st=document.querySelectorAll(".st"),box=document.getElementById("storyline"),t=false;
+ function upd(){t=false;var h=innerHeight,y=h*.55,r=box.getBoundingClientRect();
+  var p=Math.max(0,Math.min(1,(y-r.top)/r.height));box.style.setProperty("--p",p);
+  st.forEach(function(e){e.classList.toggle("on",e.getBoundingClientRect().top<y)})}
+ function req(){if(!t){t=true;requestAnimationFrame(upd)}}
+ addEventListener("scroll",req,{passive:true});addEventListener("resize",req);upd();
+})();
+/* YouTube badge: paste a restricted YouTube Data API v3 key to show live numbers,
+   or fill FALLBACK with fixed numbers (e.g. {views:12400,subs:310,likes:980}). */
+(function(){
+ var KEY="AIzaSyBG9hLVsINB251voD0wO2kmJb_SZxxWqk4",CH="UC5yMlk68z_l9DSeRO8ULQ2A",FALLBACK=null;
+ var f=new Intl.NumberFormat("en",{notation:"compact",maximumFractionDigits:1});
+ function show(d){
+  document.getElementById("ytv").textContent=f.format(d.views)+" views";
+  document.getElementById("yts").textContent=isNaN(d.subs)?"":f.format(d.subs)+" subscribers";
+  document.getElementById("ytl").textContent=f.format(d.likes)+" likes";
+ }
+ function api(path){return fetch("https://www.googleapis.com/youtube/v3/"+path+"&key="+KEY).then(function(r){if(!r.ok)throw 0;return r.json()})}
+ if(FALLBACK)show(FALLBACK);
+ if(!KEY)return;
+ var out={};
+ api("channels?part=statistics&id="+CH).then(function(c){
+  var x=c.items[0].statistics;out.views=+x.viewCount;out.subs=+x.subscriberCount;
+  var ids=[];
+  function page(tok){return api("playlistItems?part=contentDetails&maxResults=50&playlistId=UU"+CH.slice(2)+(tok?"&pageToken="+tok:"")).then(function(d){
+   d.items.forEach(function(i){ids.push(i.contentDetails.videoId)});return d.nextPageToken?page(d.nextPageToken):0})}
+  return page().then(function(){
+   var jobs=[];for(var i=0;i<ids.length;i+=50)jobs.push(api("videos?part=statistics&id="+ids.slice(i,i+50).join(",")));
+   return Promise.all(jobs)})
+ }).then(function(rs){
+  out.likes=0;rs.forEach(function(r){r.items.forEach(function(v){out.likes+=+(v.statistics.likeCount||0)})});show(out)
+ }).catch(function(){});
+})();
+</script>
+</body>
+</html>
