@@ -135,6 +135,23 @@ header .wrap{gap:12px}
 .st p{margin:0;max-width:56ch;color:var(--mute)}
 @media (max-width:760px){.vids{grid-template-columns:repeat(2,1fr)}.yt .x,.yt .nm{display:none}}
 @media (prefers-reduced-motion:reduce){.st{opacity:1;transition:none}}
+.proj figure{grid-column:1/-1;margin:14px 0 0}
+.proj figure img,.cimg{display:block;width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+.proj figure img{max-width:760px}
+.cimg{margin-bottom:12px;border-radius:6px}
+.proj figcaption{font-size:.88rem;color:var(--mute);margin-top:6px}
+details.cs{grid-column:1/-1;margin-top:14px}
+details.cs>summary{cursor:pointer;font-weight:600;color:var(--accent);padding:6px 0}
+.csd{display:grid;grid-template-columns:150px 1fr;gap:14px 24px;margin:10px 0 0;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.csd dt{font-weight:600}.csd dd{margin:0;color:var(--mute)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--ink)}
+.game{position:relative;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.game canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:pointer}
+.gbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);color:var(--mute)}
+.gwin{position:absolute;inset:0 0 56px;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;background:color-mix(in srgb,var(--bg) 86%,transparent)}
+.gwin.show{display:flex}
+.gwin h3{font-size:clamp(1.3rem,3.5vw,1.9rem)}
+@media (max-width:760px){.csd{grid-template-columns:1fr;gap:2px}.csd dd{margin-bottom:12px}}
 </style>
 </head>
 <body>
@@ -183,8 +200,8 @@ header .wrap{gap:12px}
   <div class="st"><div class="yr">Around 2020</div><h3>Hello World, I’m Sameh!</h3><p>In 3rd prep I wrote my first code, an HTML heading that said “Hello World, I’m Sameh!”. One line, but it was the first time the screen said something I decided.</p></div>
   <div class="st"><div class="yr">Around 2022</div><h3>My first real project</h3><p>In 2nd secondary I built a to-do web app with drag and drop between boards such as done, not yet, urgent and not urgent. It was my first time taking an idea from nothing to something that worked.</p></div>
   <div class="st"><div class="yr">Around 2023</div><h3>Drawn to systems</h3><p>I kept being pulled toward servers, networks and how systems fit together, without knowing the field had a name.</p></div>
-  <div class="st"><div class="yr">2024</div><h3>University, on purpose</h3><p>I chose Computer Science &amp; Artificial Intelligence at Minia National University because I wanted my passion and my academic path to point the same way, and to learn enough to build things, not only to pass exams.</p></div>
   <div class="st"><div class="yr">The turning point</div><h3>How much I hadn’t touched</h3><p>After years of study, I sat with someone who spoke about the field in real depth, and I saw how much I hadn’t reached yet. It was uncomfortable, and it was the most useful moment of my learning. I decided to become truly strong in my field, and my experience, my path, my understanding and my study have moved up a level since.</p></div>
+  <div class="st"><div class="yr">2024</div><h3>University, on purpose</h3><p>I chose Computer Science &amp; Artificial Intelligence at Minia National University because I wanted my passion and my academic path to point the same way, and to learn enough to build things, not only to pass exams.</p></div>
   <div class="st"><div class="yr">Around 2025</div><h3>Going deep, and teaching properly</h3><p>I finally learned the name of what I’d been drawn to: DevOps and infrastructure, and I went in deep. I also started Tech House – CS, an Arabic channel that teaches computer science from the beginning, this time with a clear purpose.</p></div>
   <div class="st"><div class="yr">2025 – today</div><h3>Building and shipping</h3><p>I like to build something from its first step until I see it running, and I like the problems along the way. I started with small tools, then moved to bigger, documented projects: a routed Cisco network, a multi-router WAN, an Active Directory lab, and the first stable release of the Infrastructure Health Checker (v1.0.0).</p></div>
   <div class="st"><div class="yr">A hard lesson</div><h3>The home lab that broke</h3><p>My Ubuntu home lab stopped working, and bringing it back took about a month and a half. The package repositories it updates from were failing, and the network interfaces had problems too. I traced each issue until the server ran again. I learned a lot from it, and this kind of troubleshooting is exactly what I now write down in my lab documentation.</p></div>
@@ -200,31 +217,31 @@ header .wrap{gap:12px}
   <span class="pill ok">v1.0.0 stable</span>
   <p>A system and infrastructure health-checking tool. My first stable, versioned release.</p>
   <div class="tags"><span>Automation</span><span>Monitoring</span><span>Releases</span></div>
- </article>
+ <figure><a href="assets/diagrams/health-checker-output.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/diagrams/health-checker-output.jpg" alt="Terminal output of the Infrastructure Health Checker on Ubuntu, with the generated HTML and JSON reports"></a><figcaption>One command, a full report: the tool running on Ubuntu, with the HTML and JSON reports it generated.</figcaption></figure><details class="cs"><summary>Read the case study</summary><dl class="csd"><dt>The problem</dt><dd>Diagnosing a Linux server by hand took too long. Checking the hardware, services, ports and resource usage meant running many commands, while I also had other work waiting, and I needed to see the machine’s load without adding more load to it.</dd><dt>The approach</dt><dd>I built a Python tool that collects everything with one command: <code>python3 main.py</code>. It reports CPU (logical and physical cores, per-core usage, frequency), memory, disk, the OS and kernel, network interfaces and IPs, listening ports with the process that owns them, service status, and Docker containers. Reports export as JSON, to use as an API, or HTML, for people.</dd><dt>The hardest part</dt><dd>It was my first project where I had to refactor and split code into modules. Everything started in one huge file. Moving it to a clean collectors structure (CPU, network, services, Docker, system) took research, study and a lot of trial and error, until I understood why the structure works.</dd><dt>The result</dt><dd>A stable v1.0.0 built over ten sprints, with configuration-file support, structured reports and error handling.</dd><dt>What I learned</dt><dd>I went deeper into Python as a practical tool, not only syntax, and learned to use libraries like psutil. If I started again, I would design the modular architecture on day one and spend the refactoring time improving features.</dd></dl></details></article>
  <article class="proj">
   <h3><a href="https://github.com/engsamehnasrallah-web/Active-Directory-Infrastructure-Lab">Active Directory &amp; Windows Server Lab</a></h3>
   <span class="pill ok">Completed</span>
   <p>A small-organization environment with AD DS, DNS, DHCP, OUs, users and groups, GPO and IIS, plus domain-joined clients. Documented with architecture diagrams and a troubleshooting log.</p>
   <div class="tags"><span>Windows Server</span><span>Active Directory</span><span>VMware</span></div>
- </article>
+ <figure><a href="assets/diagrams/ad-lab-architecture.svg" target="_blank" rel="noopener"><img loading="lazy" src="assets/diagrams/ad-lab-architecture.svg" alt="Architecture diagram of the Active Directory lab: DC01, WEB01 and CLIENT01 on an isolated 192.168.10.0/24 network"></a><figcaption>Lab architecture: an isolated host-only network with a domain controller, a web server and a client.</figcaption></figure><details class="cs"><summary>Read the case study</summary><dl class="csd"><dt>The problem</dt><dd>I wanted to understand how companies are set up technically, how an IT manager runs them, and how servers are handled in practice, and to gain real hands-on experience with it.</dd><dt>The approach</dt><dd>I built a small fictional company, adlab.local, in VMware Workstation: a domain controller running AD DS, DNS and DHCP, an OU structure for IT, HR and Sales, six users in four security groups, Windows 10 clients, a domain-joined IIS server, and Group Policy. I designed the network before installing any service.</dd><dt>The hardest part</dt><dd>Making the two servers work together properly, so that one could reach the other by name and the right service answered. I studied Microsoft’s Windows Server documentation until DNS, the domain and the services made sense as one system.</dd><dt>The result</dt><dd>Every issue was solved. The lab works as a miniature company: clients log in with domain users, a Group Policy is validated with positive and negative tests, a lockout policy is proven by triggering a real lockout, and an IP-restricted IIS site returns 403 to disallowed requests. Released as v1.0.0.</dd><dt>What I learned</dt><dd>Put clients into groups and apply a GPO to the group once, instead of machine by machine: don’t repeat yourself. Working with Windows Server also made me stronger on Linux servers.</dd></dl></details></article>
  <article class="proj">
   <h3><a href="https://github.com/engsamehnasrallah-web/Linux_Server_Operations_Toolkit">Linux Server Operations Toolkit</a></h3>
   <span class="pill wip">In progress</span>
   <p>A Bash toolkit for everyday Linux server operations, built in phases from planning to review.</p>
   <div class="tags"><span>Bash</span><span>Linux</span><span>Automation</span></div>
- </article>
+ <details class="cs"><summary>Read the case study</summary><dl class="csd"><dt>The problem</dt><dd>I was curious how a Linux server works inside, and why its commands are built the way they are. Can I create a user with one command? Delete one? Change permissions? Run several operations in a single line? The answers I found weren’t satisfying.</dd><dt>The approach</dt><dd>I’m building a Bash toolkit that runs through one command, used like Nmap, with readable commands that read close to English: no cryptic abbreviations. Today it can create a user, change their permissions and delete them.</dd><dt>The hardest part</dt><dd>Splitting the user’s input into a verb and a noun and deciding what to do with them. I read how Linux tools are designed, took their logic, and implemented it in Bash.</dd><dt>Where it stands</dt><dd>In progress, with no release yet. Planned next: user-defined shortcuts, so large tasks run from short, simple commands.</dd><dt>What I learned</dt><dd>It widened my thinking about logic and about how Linux distributions work. If I started again, I would make a timeline first, so the project doesn’t stall when time gets tight.</dd></dl></details></article>
  <article class="proj">
   <h3><a href="https://github.com/engsamehnasrallah-web/Multi-LAN-Routed-Network">Multi-LAN Routed Network</a></h3>
   <span class="pill ok">Completed</span>
   <p>Two routers, two switches, two LANs and a serial WAN link, with my own IP addressing plan and static routing. Documented with configs and diagrams.</p>
   <div class="tags"><span>Cisco IOS</span><span>Static routing</span><span>Packet Tracer</span></div>
- </article>
+ <figure><a href="assets/diagrams/multi-lan-topology.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/diagrams/multi-lan-topology.png" alt="Cisco Packet Tracer topology: two LANs connected by two routers over a serial WAN link"></a><figcaption>Topology: Administration and Technical LANs joined by a serial WAN, 10.0.0.0/30.</figcaption></figure><details class="cs"><summary>Read the case study</summary><dl class="csd"><dt>The problem</dt><dd>I wanted to understand how a router really works and what an IP means inside a bigger network, and to live the whole build myself instead of only studying the theory.</dd><dt>The approach</dt><dd>In Cisco Packet Tracer I built a two-department company network from scratch: choosing the devices and cables, planning the IP addresses and subnets, configuring two routers and two switches with a serial WAN link, and adding static routes. Every test was recorded.</dd><dt>The hardest part</dt><dd>My first cross-LAN ping returned Request timed out. I troubleshot step by step, pinging local networks and then remote ones, and found a router interface still down because I had forgotten <code>no shutdown</code>. After fixing it, one path still failed: a static route had a wrong address, sending traffic to the wrong network. Both are documented in the project.</dd><dt>The result</dt><dd>A working routed network, tested and documented, with access to the devices secured by an enable secret, console and VTY passwords, and password encryption.</dd><dt>What I learned</dt><dd>Troubleshooting is where I learn the most. If I started again I would make the same mistakes, because they taught me more than the things that worked the first time.</dd></dl></details></article>
 </div></section>
 
 <section id="more"><div class="wrap">
  <h2>More projects</h2>
  <div class="grid">
-  <a class="card" href="https://github.com/engsamehnasrallah-web/Multi-Router-WAN"><h3>Multi-Router WAN</h3><p>A multi-router WAN built in Cisco Packet Tracer.</p><span class="pill ok">Completed</span></a>
+  <a class="card" href="https://github.com/engsamehnasrallah-web/Multi-Router-WAN"><img class="cimg" loading="lazy" src="assets/diagrams/multi-router-wan.svg" alt="Multi-Router WAN topology: HQ, core, and two branch routers"><h3>Multi-Router WAN</h3><p>A four-router WAN in Cisco Packet Tracer: an HQ router, a transit core and two branches.</p><span class="pill ok">Completed</span></a>
   <a class="card" href="https://github.com/engsamehnasrallah-web/Linux_Monitoring_Tool"><h3>Linux Monitoring Tool</h3><p>Monitors a Linux system from the command line.</p><span class="pill ok">Completed</span></a>
   <a class="card" href="https://github.com/engsamehnasrallah-web/Log_Analyzer"><h3>Log Analyzer</h3><p>Python tool that parses Linux login logs with regex.</p><span class="pill ok">Completed</span></a>
   <a class="card" href="https://github.com/engsamehnasrallah-web/Backup_Automation_Tool"><h3>Backup Automation Tool</h3><p>Automates file backups.</p><span class="pill ok">Completed</span></a>
@@ -274,6 +291,16 @@ header .wrap{gap:12px}
   <a class="ic" href="https://youtube.com/@samehnasralla0" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
  </div>
 </div></section>
+<section id="play"><div class="wrap">
+ <h2>Take a break</h2>
+ <p class="sub">Run through my story. Press Space, tap or click to jump over the milestones. Hit one and you start the journey again from the beginning.</p>
+ <div class="game">
+  <canvas id="gc" role="img" aria-label="A small runner game: a cartoon of Sameh runs past six milestones from his story until he reaches Now"></canvas>
+  <div class="gwin" id="gw" aria-live="polite"><h3 id="gh">Now: shipping real systems.<br>Let’s work together.</h3><div class="btns"><a class="btn primary" id="gl" href="#contact">Say hello</a><button class="btn" id="ga" type="button">Play again</button></div></div>
+  <div class="gbar"><span id="gp" aria-live="polite">0 / 6 milestones</span><button class="btn primary" id="gb" type="button">Start</button></div>
+ </div>
+</div></section>
+
 </main>
 
 <footer><div class="wrap">© <span id="yr">2026</span> Sameh Nasrallah</div></footer>
@@ -323,6 +350,66 @@ header .wrap{gap:12px}
  }).then(function(rs){
   out.likes=0;rs.forEach(function(r){r.items.forEach(function(v){out.likes+=+(v.statistics.likeCount||0)})});show(out)
  }).catch(function(){});
+})();
+
+(function(){
+ var cv=document.getElementById("gc"),c=cv.getContext("2d"),W=800,H=260,GY=206,PX=120;
+ var dpr=Math.min(2,window.devicePixelRatio||1);cv.width=W*dpr;cv.height=H*dpr;c.scale(dpr,dpr);
+ var L=["Old channel","Hello World","First project","Turning point","University","Home lab"],OX=[620,1000,1380,1760,2140,2520],FIN=2960;
+ var st="idle",dist=0,y=0,vy=0,t=0,wob=0,last=0,vis=true,cl={};
+ function col(){var q=getComputedStyle(document.documentElement);["--surface","--line","--ink","--mute","--accent","--bg"].forEach(function(k){cl[k]=q.getPropertyValue(k).trim()})}
+ col();new MutationObserver(function(){col();draw()}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+ function jump(){if(st==="run"&&y===0)vy=12.2}
+ function player(){
+  var s=1.25,x=PX,b=GY-y,sw=y>0?0:Math.sin(t*.35)*9;
+  c.save();c.translate(x,b);c.scale(s,s);c.lineCap="round";
+  c.strokeStyle="#b9c7de";c.lineWidth=7;
+  c.beginPath();c.moveTo(-5,-20);c.lineTo(-5+sw,-2);c.moveTo(5,-20);c.lineTo(5-sw,-2);c.stroke();
+  c.fillStyle="#fff";c.fillRect(-9+sw,-3,9,3);c.fillRect(1-sw,-3,9,3);
+  c.fillStyle="#4a4f55";c.beginPath();c.roundRect(-13,-52,26,34,7);c.fill();
+  c.fillStyle="#1b1f24";c.fillRect(-7,-52,14,4);
+  c.fillStyle="#e2b48f";c.beginPath();c.arc(0,-66,15,0,7);c.fill();
+  c.fillStyle="#1d1613";c.beginPath();c.arc(0,-69,15.5,Math.PI*1.02,Math.PI*1.98);c.lineTo(10,-72);c.lineTo(-12,-70);c.fill();
+  c.strokeStyle="#2b2b2b";c.lineWidth=1.4;c.beginPath();c.arc(-6,-65,5,0,7);c.moveTo(11,-65);c.arc(6,-65,5,0,7);c.moveTo(-1,-65);c.lineTo(1,-65);c.stroke();
+  c.fillStyle="#2b2b2b";c.beginPath();c.arc(-6,-65,1.4,0,7);c.arc(6,-65,1.4,0,7);c.fill();
+  c.strokeStyle="#7a3b2e";c.lineWidth=1.6;c.beginPath();c.arc(0,-61,5,.15*Math.PI,.85*Math.PI);c.stroke();
+  c.restore();
+ }
+ function draw(){
+  c.clearRect(0,0,W,H);
+  c.strokeStyle=cl["--line"];c.lineWidth=2;c.beginPath();c.moveTo(0,GY);c.lineTo(W,GY);c.stroke();
+  c.textAlign="center";c.font="600 14px 'Source Sans 3',system-ui,sans-serif";
+  OX.forEach(function(o,i){var x=o-dist;if(x<-120||x>W+120)return;
+   c.fillStyle=cl["--surface"];c.strokeStyle=cl["--accent"];c.lineWidth=2.5;
+   c.beginPath();c.roundRect(x-22,GY-42,44,42,6);c.fill();c.stroke();
+   c.fillStyle=cl["--ink"];c.fillText(L[i],x,GY-52)});
+  var fx=FIN-dist;if(fx<W+60){c.strokeStyle=cl["--accent"];c.lineWidth=3;c.beginPath();c.moveTo(fx,GY);c.lineTo(fx,GY-110);c.stroke();
+   c.fillStyle=cl["--accent"];c.beginPath();c.moveTo(fx,GY-110);c.lineTo(fx+64,GY-92);c.lineTo(fx,GY-72);c.fill();
+   c.fillStyle=cl["--bg"];c.font="800 15px 'Bricolage Grotesque',sans-serif";c.fillText("Now",fx+26,GY-86)}
+  if(wob>0){c.save();c.translate(0,Math.sin(wob*.9)*2);player();c.restore()}else player();
+  if(st==="idle"){c.fillStyle=cl["--mute"];c.font="600 16px 'Source Sans 3',sans-serif";c.fillText("Press Start, then jump over the milestones",W/2,56)}
+ }
+ function loop(n){
+  if(st!=="run"||!vis){last=0;return}
+  var k=last?Math.min(2,(n-last)/16.67):1;last=n;
+  dist+=3.1*k;t+=k;
+  if(y>0||vy>0){y+=vy*k;vy-=.62*k;if(y<=0){y=0;vy=0}}
+  var done=0;
+  var hit=false;OX.forEach(function(o){var x=o-dist;if(x<PX-30)done++;if(Math.abs(x-PX)<28&&y<34)hit=true});
+  document.getElementById("gp").textContent=done+" / 6 milestones";
+  draw();
+  if(hit){end(false);return}
+  if(FIN-dist<PX+20){end(true);return}
+  requestAnimationFrame(loop);
+ }
+ function end(win){st=win?"won":"lost";document.getElementById("gh").innerHTML=win?"Now: shipping real systems.<br>Let’s work together.":"You hit a milestone.<br>Take the journey from the beginning.";document.getElementById("gl").style.display=win?"":"none";document.getElementById("ga").textContent=win?"Play again":"Try again";document.getElementById("gw").classList.add("show");document.getElementById("gb").textContent=win?"Play again":"Try again";draw()}
+ function start(){dist=0;y=0;vy=0;wob=0;st="run";document.getElementById("gw").classList.remove("show");document.getElementById("gb").textContent="Restart";document.getElementById("gp").textContent="0 / 6 milestones";last=0;requestAnimationFrame(loop)}
+ document.getElementById("gb").addEventListener("click",start);
+ document.getElementById("ga").addEventListener("click",start);
+ cv.addEventListener("pointerdown",function(){if(st==="run")jump();else if(st==="idle")start()});
+ addEventListener("keydown",function(e){if(st==="run"&&vis&&(e.code==="Space"||e.code==="ArrowUp")){e.preventDefault();jump()}});
+ new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&st==="run"){last=0;requestAnimationFrame(loop)}}).observe(cv);
+ draw();
 })();
 </script>
 </body>
