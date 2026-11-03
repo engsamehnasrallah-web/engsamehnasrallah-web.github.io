@@ -4,9 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sameh Nasrallah | DevOps &amp; Infrastructure</title>
-<meta name="description" content="Sameh Nasrallah, Computer Science &amp; AI student building hands-on DevOps and infrastructure projects: Active Directory, Cisco networking, Linux automation and CI.">
+<meta name="description" content="Sameh Nasrallah, Computer Science &amp; AI student building documented DevOps and infrastructure projects: Active Directory, Cisco networking, Linux automation and CI.">
+<meta name="author" content="Sameh Nasrallah">
+<meta name="theme-color" content="#0c1522">
+<link rel="canonical" href="https://engsamehnasrallah-web.github.io/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sameh Nasrallah">
 <meta property="og:title" content="Sameh Nasrallah | DevOps &amp; Infrastructure">
-<meta property="og:description" content="Documented, reproducible infrastructure and automation projects.">
+<meta property="og:description" content="Documented projects in Active Directory, Cisco networking and Linux automation, plus my story and my CS channel.">
+<meta property="og:url" content="https://engsamehnasrallah-web.github.io/">
+<meta property="og:image" content="https://engsamehnasrallah-web.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sameh Nasrallah, DevOps and Infrastructure portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sameh Nasrallah | DevOps &amp; Infrastructure">
+<meta name="twitter:description" content="Documented projects in Active Directory, Cisco networking and Linux automation.">
+<meta name="twitter:image" content="https://engsamehnasrallah-web.github.io/assets/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sameh Nasrallah","url":"https://engsamehnasrallah-web.github.io/","image":"https://engsamehnasrallah-web.github.io/assets/profile.jpg","jobTitle":"DevOps & Infrastructure (student)","email":"engsamehnasrallah@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Beni Mazar","addressRegion":"El Minya","addressCountry":"EG"},"sameAs":["https://github.com/engsamehnasrallah-web","https://linkedin.com/in/sameh-nasrallah","https://youtube.com/@samehnasralla0"],"knowsAbout":["DevOps","Infrastructure","Active Directory","Windows Server","Cisco networking","Linux","Bash","Python"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -46,7 +64,7 @@ h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
 .btn:hover{border-color:var(--accent)}
 .photo{position:relative;justify-self:end;width:100%;max-width:300px}
 .photo::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid var(--accent);border-radius:14px}
-.photo img{position:relative;display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:14px}
+.photo img{position:relative;display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:14px}
 .about{max-width:68ch}
 .about p{margin:0 0 16px;color:var(--mute)}
 .edu{margin-top:8px;color:var(--ink)}
@@ -354,7 +372,9 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(-
 
 (function(){
  var cv=document.getElementById("gc"),c=cv.getContext("2d"),W=800,H=260,GY=206,PX=120;
- var dpr=Math.min(2,window.devicePixelRatio||1);cv.width=W*dpr;cv.height=H*dpr;c.scale(dpr,dpr);
+ var dpr=Math.min(2,window.devicePixelRatio||1);
+ function size(){W=Math.max(320,Math.min(800,cv.parentNode.clientWidth||800));cv.width=W*dpr;cv.height=H*dpr;c.setTransform(dpr,0,0,dpr,0,0)}
+ size();addEventListener("resize",function(){size();draw()});
  var L=["Old channel","Hello World","First project","Turning point","University","Home lab"],OX=[620,1000,1380,1760,2140,2520],FIN=2960;
  var st="idle",dist=0,y=0,vy=0,t=0,wob=0,last=0,vis=true,cl={};
  function col(){var q=getComputedStyle(document.documentElement);["--surface","--line","--ink","--mute","--accent","--bg"].forEach(function(k){cl[k]=q.getPropertyValue(k).trim()})}

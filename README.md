@@ -1,7 +1,5 @@
 # Sameh Nasrallah | Portfolio
 
-![Portfolio preview](assets/preview.png)
-
 Personal portfolio of **Sameh Nasrallah**, a Computer Science & AI student focused on **DevOps and infrastructure**. It presents documented projects in Active Directory, Cisco networking and Linux automation, plus an Arabic YouTube channel teaching CS from the beginning.
 
 **Live site:** https://engsamehnasrallah-web.github.io
@@ -13,6 +11,7 @@ Personal portfolio of **Sameh Nasrallah**, a Computer Science & AI student focus
 - **YouTube section** with thumbnail cards for every video and Short, grouped into a learning path instead of a flat list.
 - **Live YouTube badge** in the header showing views, subscribers and likes through the YouTube Data API v3.
 - **Dark and light themes**, remembered between visits and following the system preference on first load.
+- **SEO and sharing**: canonical URL, Open Graph and Twitter cards, JSON-LD `Person` data, a favicon set, `robots.txt` and a sitemap.
 - **Responsive and accessible**: works down to phone widths, visible keyboard focus, and reduced-motion support.
 
 ## Tech stack
@@ -24,9 +23,14 @@ Plain **HTML, CSS and JavaScript** in a single `index.html`. No framework, no bu
 ```
 .
 ├── index.html                  # the whole site: markup, styles and scripts
+├── robots.txt                  # crawler rules and sitemap location
+├── sitemap.xml
 ├── assets/
 │   ├── profile.jpg             # portrait used in the hero
-│   └── Sameh_Nasrallah_CV.pdf  # downloadable CV
+│   ├── Sameh_Nasrallah_CV.pdf  # downloadable CV
+│   ├── og-image.png            # 1200x630 link-preview image (LinkedIn, WhatsApp, X)
+│   ├── favicon.svg / favicon.png / apple-touch-icon.png
+│   └── diagrams/               # project diagrams and screenshots
 └── README.md
 ```
 
